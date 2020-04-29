@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
   <title>Bootstrap</title>
 </head>
 <body>
   <h1>Bootstrap</h1>
   
+  <div class="btn-group" role="group" aria-label="Basic example" id="filters">
+    <button type="button" class="btn btn-secondary" id="all">All Ducks</button>
+    <button type="button" class="btn btn-secondary" id="small" data-filter="size">Small Ducks</button>
+    <button type="button" class="btn btn-secondary" id="medium" data-filter="size">Medium Ducks</button>
+    <button type="button" class="btn btn-secondary" id="large" data-filter="size">Large Ducks</button>
+    <button type="button" class="btn btn-secondary" id="male" data-filter="gender">Male Ducks</button>
+    <button type="button" class="btn btn-secondary" id="female" data-filter="gender">Female Ducks</button>
+    <button type="button" class="btn btn-secondary" id="rubber" data-filter="isRubber">Rubber Ducks</button>
+    <button type="button" class="btn btn-secondary" id="not-rubber" data-filter="isRubber">Not Rubber Ducks</button>
+  </div>
+
   <div id="ducks"></div>
 
   <script src="main.js"></script>

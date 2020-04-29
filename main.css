@@ -5,13 +5,17 @@
 }
 
 .duck {
-  width: 30%;
-  padding: 1em;
-  margin: 1em 0;
-  text-align: center;
-  border: 1px solid #CCC;
+  width: 300px;
+  margin: .5em; 
 }
 
 .duck img {
-  max-width: 90%;
+  object-fit: cover;
+  width:300px;
+  height:300px;
+}
+
+#filters {
+  width: 80% !important;
+  margin: auto !important;
 }
