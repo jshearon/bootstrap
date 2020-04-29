@@ -96,21 +96,58 @@ const printToDom = (string) => {
 const buildDucks = (array) => {
   let domString = '';
   for (let i=0; i < array.length; i++) {
-    domString += `<div class="duck">
-                    <header>${array[i].name}</header>
-                    <img src="${array[i].imageUrl}" alt="${array[i].name}">
-                    <p>Breed: ${array[i].breed}<br>
-                      Size: ${array[i].size}<br>
-                      Temperament: ${array[i].temperament}<br>
-                      Gender: ${array[i].gender}<br>
-                      Age: ${array[i].age}<br>
-                      ${array[i].isRubber ? 'Rubber Ducky' : 'Real Ducky'}
-                  </div>`;
+    domString += `<div class="card duck">
+                    <img src="${array[i].imageUrl}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">${array[i].name}</h5>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Breed: ${array[i].breed}</li>
+                          <li class="list-group-item">Size: ${array[i].size}</li>
+                          <li class="list-group-item">Temperament: ${array[i].temperament}</li>
+                          <li class="list-group-item">Gender: ${array[i].gender}</li>
+                          <li class="list-group-item">Age: ${array[i].age}</li>
+                          <li class="list-group-item">${array[i].isRubber ? 'Rubber Ducky' : 'Real Ducky'}</li>
+                        </ul>
+                      </div>
+                  </div>
+                  `;
   }
   printToDom(domString);
 }
 
+const filters = (event) => {
+  const clickedId = event.target.id;
+  const filter = event.target.dataset.filter;
+  const filteredDucks = [];
+
+  if (clickedId == "all") {
+    buildDucks(ducks);
+    return
+  }
+  
+  for (let i=0; i < ducks.length; i++) {
+    const duck = ducks[i];
+    if (filter == 'isRubber' && clickedId == 'rubber' && duck.isRubber === true) {
+      filteredDucks.push(duck);
+    } else if (filter == 'isRubber' && clickedId == 'not-rubber' && duck.isRubber === false) {
+      filteredDucks.push(duck);
+    } else if (clickedId == duck[filter]) {
+      filteredDucks.push(duck);
+    }
+  }
+
+  buildDucks(filteredDucks);
+}
+
+const listeners = () => {
+  const btns = document.getElementsByClassName('btn');
+  for (let i = 0; i < btns.length; i++) {
+    document.querySelector('#' + btns[i].id).addEventListener('click', filters);
+  }
+}
+
 init = () => {
+  listeners();
   buildDucks(ducks);
 }
 
