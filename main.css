@@ -1,0 +1,17 @@
+#ducks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.duck {
+  width: 30%;
+  padding: 1em;
+  margin: 1em 0;
+  text-align: center;
+  border: 1px solid #CCC;
+}
+
+.duck img {
+  max-width: 90%;
+}
